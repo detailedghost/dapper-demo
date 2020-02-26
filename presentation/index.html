@@ -1,0 +1,182 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dapper Presentation</title>
+   <link rel="stylesheet" href="./reveal.css" type="text/css">
+   <link rel="stylesheet" href="./night.css" type="text/css">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+   <link rel="stylesheet" href="./monokai.css" type="text/css">
+</head>
+<body>
+   <div class="reveal">
+      <div class="slides">
+         <section>
+            <h2>Dapper</h2>
+            <h3>My favorite <span class="fragment">(micro)</span> ORM 🚀</h3>
+         </section>
+         <section>
+            <h3>What is a <span>"ORM"?</span></h3>
+            <section></section>
+            <section>
+               <b>"Object - Relational - Mapping"</b>
+            </section>
+            <section>
+               <h2> 💻 ↔ 🚀 ↔ 💾 </h2>
+            </section>
+            <section> 
+               <p>A abstraction layer of communication between an application objects and a database.</p>
+            </section>
+         </section>
+         <section>
+            <h3>Major Benefits 📈</h3>
+            <ul style="list-style: none; padding: 0px; margin: 0px;">
+               <li> ✔ <abbr title="Create, Read, Update, Delete">CRUD</abbr> operations made easy  </li>
+               <li> ✔ Minimal SQL knowledge is needed </li>
+               <li> ✔ One code base to maintain </li>
+               <li> ✔ Speedsup Development</li>
+            </ul>
+            <div class="fragment" style="margin-top: 50px;">
+               <i>Other Great Reads</i>
+               <ul style="width: 100%;">
+                  <li><a href="https://devblogs.microsoft.com/gblock/ten-advantages-of-an-orm-object-relational-mapper/">Advantages of ORM</a></li>
+                  <li><a href="https://stackoverflow.com/questions/4667906/the-advantages-and-disadvantages-of-using-orm">Stackoverflow Discussion</a></li>
+                  <li><a href="https://www.learnnowonline.com/blogs/2012/08/28/4-benefits-of-object-relational-mapping-orm">ORM Benefits</a></li>
+               </ul>
+            </div>
+         </section>
+         <section>
+            <h3>Some popular ORMs</h4>
+            <ul>
+               <li>Microsoft Entity Framework</li>
+               <li>Hibernate (Java)</li>
+               <li>NHibernate (C#)</li>
+               <li>CakePHP</li>
+               <li>Django</li>
+            </ul>
+         </section>
+         <section>
+            <h3>That sounds great!</h3>
+            <span class="fragment">...</span>
+            <h3 class="fragment">What are some problems?</h3>
+         </section>
+         <section>
+            <h3>Major Bummers 📉</h3>
+            <ul style="list-style: none; padding: 0px; margin: 0px;">
+               <li> ❌ ORMs can be complex themselves</li>
+               <li> ❌ Migrate pre-existing queries to ORM styled</li>
+               <li> ❌ SLOWER THAN MOLASSES</li>
+            </ul>
+         </section>
+         <section >
+            <h3>Dapper to the rescue! 🐱‍🏍</h3>
+            <img src="https://media.giphy.com/media/BDUSBSPnyfauc/giphy.gif" />
+         </section>
+         <section>
+            <h3>Setting It Up</h3>
+            <span> 1. Download <u>Dapper</u> using Nuget Package Manager </span>
+         </section>
+         <section>
+               <span>For Visual Studio</span>
+               <div>
+                  <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcsharpcorner.mindcrackerinc.netdna-cdn.com%2FUploadFile%2F8a67c0%2Fuse-nuget-package-manager-in-visual-studio-2015%2FImages%2Fchoose%2520Package%2520Manager%2520Console.jpg&f=1&nofb=1"/>
+               </div>
+               <p>
+                  Search and install "Dapper"
+               </p>
+         </section>
+         <section>
+               <span>For CLI Junkies</span>
+               <pre><code class="hljs powershell" data-trim>
+$ dotnet package add Dapper
+$ dotnet package add "Database Connection Package" 
+$ # ^ (required for non SQL Server like Sqlite, Postgres)
+               </code></pre>
+         </section>
+
+
+         <section>
+            <h3>Setting It Up</h3>
+            <span> 3. Setup a connection factory class with a compatible <i>IDbConnection</i></span>
+            <pre><code class="hljs C# has-highlights" data-trim data-noescape data-line-numbers="4">
+namespace dapper_demo
+{
+    public static class DapperConnectionFactory
+    {
+        public static IDbConnection CreateConnection(){
+            string dbConnectionString = "...";
+
+            //? "new SqlConnection" would be used for Sql Server
+            //? It also comes prebaked in!
+            return new SQLiteConnection(connectionString);
+        }
+    }
+}
+            </code></pre>
+         </section>
+
+         <section>
+            <h3>Now ready to go! 🥂</h3>
+            <h3 class="fragment">...But some things to keep in mind first</h3>
+         </section>
+
+         <section>
+            <h3>2 functions</h3>
+            <h4 class="fragment"><b>Query</b> for SELECT</h4>
+            <h4 class="fragment"><b>Execute</b> for INSERT, UPDATE, DELETE</h4>
+         </section>
+
+         <section>
+            <h3>First <u>Query</u></h3>
+            <p>Let's run through some code examples ☕</p>
+         </section>
+
+         <section>
+            <h3>Lastly <u>Execute</u></h3>
+            <p>Let's run through some code examples ☕</p>
+         </section>
+
+         <section>
+            <h3>Dapper Benefits 🙌</h3>
+            <ul style="list-style: none; padding: 0px; margin: 0px;">
+               <li> ✔ Easy to setup</li>
+               <li> ✔ Previous SQL statements can easily be reused</li>
+               <li> ✔ Can easily swap between different Database types</li>
+            </ul>
+         </section>
+         <section>
+            <h3>Dapper Downsides 😓</h3>
+            <ul style="list-style: none; padding: 0px; margin: 0px;">
+               <li> ❌ Some SQL knowledge is needed</li>
+               <li> ❌ Object tracking isn't available</li>
+            </ul>
+         </section>
+         <section>
+            <h3>Q&A</h3>
+         </section>
+         <section data-background-image="https://media.giphy.com/media/lD76yTC5zxZPG/giphy.gif">
+         </section>
+      </div>
+   </div>
+
+   <script charset="UTF-8" src=""></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/js/reveal.min.js"></script>
+   <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+         document.querySelectorAll('pre code').forEach((block) => hljs.highlightBlock(block));
+      });
+      Reveal.initialize({
+         dependencies: [
+		      // Interpret Markdown in <section> elements
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.0/marked.min.js', async: true, condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+		      // Syntax highlight for <code> elements
+		      { src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js', async: true },
+         ],
+         history: true,
+      });
+   </script> 
+</body>
+</html>
